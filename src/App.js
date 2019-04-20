@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Page from './components/componente con sonido/ComponentePrincipal'
 
-import Slider from './components/ComponentePractica'
 
 class App extends Component {
   render() {
     return (
       <div >
-        <Slider/>
+        <Page/>
       </div>
     );
   }
