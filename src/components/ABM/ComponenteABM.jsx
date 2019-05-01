@@ -11,7 +11,7 @@ class ComponenteABM extends React.Component {
         } 
 
     }
-
+/*
     componentDidMount(){
         API.get("/users").then(users => this.setState({usuarios: users})).catch(console.log("holis"));
     }
@@ -48,7 +48,7 @@ class ComponenteABM extends React.Component {
             </div>
         </div>
         );
-    }
+    }*/
 
     render() {
 
@@ -59,7 +59,10 @@ class ComponenteABM extends React.Component {
                 
                
             </ul>
-            <button type="button" className="btn btn-primary" onClick={this.goUser()}> ver usuario </button>
+            <button type="button" className="btn btn-primary" > ver usuario </button>
+            <button type="button" className="btn btn-primary" > ver usuario </button>
+            <button type="button" className="btn btn-primary" > ver usuario </button>
+            <button type="button" className="btn btn-primary" > ver usuario </button>
         </div>
         );
     }
