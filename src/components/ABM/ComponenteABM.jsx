@@ -1,13 +1,19 @@
 import React from 'react';
 import API from '../../ApiComponent'
-import {Dropdown, Button} from "reactstrap"
+import '../ABM/style.css'
+
 
 class ComponenteABM extends React.Component {
 
     constructor() {
         super();
         this.state = {
-            usuarios: [],
+            usuarios: [{
+                "name": "Fede",
+                "surname": "El",
+                "email": "mascapo.com",
+                "dni": 12345678
+            }],
         } 
 
     }
@@ -22,11 +28,11 @@ class ComponenteABM extends React.Component {
     }
 
     goNewUser() {
-        this.props.history.push('/newUser');
+       // this.props.history.push('/newUser');
     }
 
     goUser() {
-        this.props.history.push('/home/'+`${this.state.usuarioSeleccionado.id}`);
+        //this.props.history.push('/home/'+`${this.state.usuarioSeleccionado.id}`);
     }
 
     deleteUser() {
@@ -36,16 +42,13 @@ class ComponenteABM extends React.Component {
 
     renderButtons() {
         return(
-        <div>
-            <div>
-                <Button variant="primary" onClick={this.goNewUser()}> nuevo usuario </Button> 
-            </div>
-            <div>
-                <Button variant="primary" onClick={this.deleteUser()}> baja usuario </Button>
-            </div>
-            <div>
-                <Button variant="primary" onClick={this.goUser()}> ver usuario </Button>
-            </div>
+        <div class="Button-flex">
+     
+            <button type="button" className="btn btn-primary" onClick={this.newUser()}> agregar usuario </button> 
+        
+            <button type="button" className="btn btn-primary" onClick={this.deleteUser()}> eliminar usuario </button>
+    
+            <button type="button" className="btn btn-primary" onClick={this.goUser()}> ver usuario </button>
         </div>
         );
     }
@@ -55,11 +58,8 @@ class ComponenteABM extends React.Component {
 
         return (
         <div>
-            <ul>
-                
-               
-            </ul>
-            <button type="button" className="btn btn-primary" onClick={this.goUser()}> ver usuario </button>
+            {this.renderUsuarios()}
+            {this.renderButtons()}    
         </div>
         );
     }
