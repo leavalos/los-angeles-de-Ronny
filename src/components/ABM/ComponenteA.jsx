@@ -7,7 +7,7 @@ class ComponenteA extends React.Component {
     constructor() {
         super();
         this.state = {
-            
+                
                 name: '',
                 surname: '',
                 email: '',
@@ -18,32 +18,30 @@ class ComponenteA extends React.Component {
     }
 
     crearUsuario(){
-       
-        
-       API.put('/user/new',this.state);
+        API.put('/user/new',this.state)
     }
 
     setNombre(event){
         this.setState({name: event.target.value})
-       
+        console.log(this.props);
         
     }
 
     setApellido(event){
         this.setState({surname: event.target.value})
-        
+        console.log(this.props);
         
     }
 
     setEmail(event){
         this.setState({email: event.target.value})
-        
+        console.log(this.props);
         
     }
 
     setDni(event){
         this.setState({dni: event.target.value})
-       
+        console.log(this.props);
         
     }
     
@@ -69,7 +67,7 @@ class ComponenteA extends React.Component {
                     <label for="exampleInputPassword1">Dni</label>
                     <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Pone Dni"onChange={event => this.setDni(event)}/>
                  </div>
-                 <button class="btn btn-primary" onClick={() =>this.crearUsuario()} >Submit</button>
+                 <button type="submit" class="btn btn-primary" onClick={this.crearUsuario()} >Submit</button>
             </form>
         </div>
         );

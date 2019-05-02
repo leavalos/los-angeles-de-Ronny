@@ -77,7 +77,7 @@ class ComponenteM extends React.Component {
 
     render() {
         return (
-            <body>
+            <body class="colorBody">
                 <div class="container">
                 <div class="row">
                 <div class="col col-lg-2">
