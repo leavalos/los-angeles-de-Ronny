@@ -20,13 +20,26 @@ class ComponenteM extends React.Component {
         API.get(`/user/${this.props.match.params.id}/ver`)
         .then(user => this.setState({user})).catch(console.log("holis"));
     }
-    userName(){
-        const text = this.state.name
-        return text;
-    }
+
 
     setNombre(event){
         this.setState({name: event.target.value})
+    }
+
+    setApellido(event){
+        this.setState({surname: event.target.value})
+    }
+
+    setEmail(event){
+        this.setState({email: event.target.value})     
+    }
+
+    setDni(event){
+        this.setState({dni: event.target.value})
+    }
+
+    modificarUsuario() {
+        API.post(`/user/${this.state.id}/edit`, this.state).then(console.log("Funciona")).then(console.log("No Funciona"));
     }
 
     renderDer() {
@@ -52,6 +65,7 @@ class ComponenteM extends React.Component {
                             <input type="number" class="form-control" id="exampleInputPassword1" placeholder={this.state.dni}onChange={event => this.setDni(event)}/>
                         </div>
                     </form>
+                        <button type="submit" class="btn btn-primary" onClick={() =>this.modificarUsuario()} >Submit</button>
                     </div>
                 </div>
             </div>
