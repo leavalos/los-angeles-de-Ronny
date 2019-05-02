@@ -9,11 +9,34 @@ class ComponenteABM extends React.Component {
         super();
         this.state = {
             usuarios: [{
+                "id": 1,
                 "name": "Fede",
                 "surname": "El",
                 "email": "mascapo.com",
                 "dni": 12345678
-            }],
+            },
+            {
+                "id": 2,
+                "name": "Tobias",
+                "surname": "El",
+                "email": "mascapo.com",
+                "dni": 12345678
+            },
+            {
+                "id": 3,
+                "name": "Lucas",
+                "surname": "El",
+                "email": "mascapo.com",
+                "dni": 12345678
+            }  
+            ],
+            usuarioSeleccionado: {
+                "id": 0,
+                "name": "",
+                "surname": "",
+                "email": "",
+                "dni": 0
+            }
         } 
 
     }
@@ -24,15 +47,32 @@ class ComponenteABM extends React.Component {
 
 
     renderUsuarios() {
-        return(this.state.usuarios.map(usuario => <li>{usuario.name}</li>));
+
+        return(
+            <div class="card">
+                {this.state.usuarios.map(usuario =>
+                    <div class="card-body" onClick={() => 
+                    this.setState({usuarioSeleccionado: usuario})}
+                    style={{
+                        backgroundColor: this.state.usuarioSeleccionado.name 
+                        && this.state.usuarioSeleccionado.name === usuario.name ? 'red' : 'beige',
+                        fontSize: '30px',
+                    }}
+                    >
+                    {usuario.name}
+                    
+                    </div>
+                )}
+            </div>
+            );
     }
 
     goNewUser() {
-       // this.props.history.push('/newUser');
+       this.props.history.push('/user/new');
     }
 
     goUser() {
-        //this.props.history.push('/home/'+`${this.state.usuarioSeleccionado.id}`);
+        this.props.history.push(`/user/${this.state.usuarioSeleccionado.id}`);
     }
 
     deleteUser() {
@@ -44,11 +84,11 @@ class ComponenteABM extends React.Component {
         return(
         <div class="Button-flex">
      
-            <button type="button" className="btn btn-primary" onClick={this.newUser()}> agregar usuario </button> 
+            <button type="button" className="btn btn-primary" onClick={() =>this.goNewUser()}> agregar usuario </button> 
         
-            <button type="button" className="btn btn-primary" onClick={this.deleteUser()}> eliminar usuario </button>
+            <button type="button" className="btn btn-primary" onClick={() =>this.deleteUser()}> eliminar usuario </button>
     
-            <button type="button" className="btn btn-primary" onClick={this.goUser()}> ver usuario </button>
+            <button type="button" className="btn btn-primary" onClick={() =>this.goUser()}> ver usuario </button>
         </div>
         );
     }
@@ -57,10 +97,12 @@ class ComponenteABM extends React.Component {
 
 
         return (
-        <div>
-            {this.renderUsuarios()}
-            {this.renderButtons()}    
-        </div>
+            <body>
+                <div>   
+                    {this.renderUsuarios()}
+                    {this.renderButtons()}    
+                </div>
+            </body>
         );
     }
 
