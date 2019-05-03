@@ -8,28 +8,7 @@ class ComponenteABM extends React.Component {
     constructor() {
         super();
         this.state = {
-            usuarios: [{
-                "id": 1,
-                "name": "Fede",
-                "surname": "El",
-                "email": "mascapo.com",
-                "dni": 12345678
-            },
-            {
-                "id": 2,
-                "name": "Tobias",
-                "surname": "El",
-                "email": "mascapo.com",
-                "dni": 12345678
-            },
-            {
-                "id": 3,
-                "name": "Lucas",
-                "surname": "El",
-                "email": "mascapo.com",
-                "dni": 12345678
-            }  
-            ],
+            usuarios: [],
             usuarioSeleccionado: {
                 "id": 0,
                 "name": "",
@@ -76,8 +55,8 @@ class ComponenteABM extends React.Component {
     }
 
     deleteUser() {
-        API.post('/user/'+`${this.state.usuarioSeleccionado}`+'/delete')
-        .then(console.log("Pillo")).catch(console.log("No pillo"))
+        API.delete(`/user/${this.state.usuarioSeleccionado.id}/delete`)
+        .then(console.log(this.state)).catch(console.log("No pillo"))
     }
 
     renderButtons() {

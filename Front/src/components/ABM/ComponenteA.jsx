@@ -67,7 +67,7 @@ class ComponenteA extends React.Component {
                     <label for="exampleInputPassword1">Dni</label>
                     <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Pone Dni"onChange={event => this.setDni(event)}/>
                  </div>
-                 <button type="submit" class="btn btn-primary" onClick={() =>this.crearUsuario} >Submit</button>
+                 <button class="btn btn-primary" onClick={() => this.crearUsuario()} >Sumbit</button>
             </form>
         </div>
         );

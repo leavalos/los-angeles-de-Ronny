@@ -8,17 +8,24 @@ class ComponenteM extends React.Component {
     constructor() {
         super();
         this.state = {
-                id: 2,
-                name: "Tobias",
-                surname: "El",
-                email: "mascapo.com",
-                dni: 12345678
+                id: null,
+                name: "",
+                surname: "",
+                email: "",
+                dni: null
         }
     }
 
     componentDidMount() {
-        API.get(`/user/${this.props.match.params.id}/ver`)
-        .then(user => this.setState({user})).catch(console.log("holis"));
+        API.get(`/user/${this.props.match.params.id}/show`)
+        .then(user => this.setState(
+            {
+                id: user.id,
+                name: user.name,
+                surname: user.surname,
+                email: user.email,
+                dni: user.dni
+            })).catch(console.log("Todo mal perro"));
     }
 
 
@@ -39,7 +46,7 @@ class ComponenteM extends React.Component {
     }
 
     modificarUsuario() {
-        API.post(`/user/${this.state.id}/edit`, this.state).then(console.log("Funciona")).then(console.log("No Funciona"));
+        API.post(`/user/edit`, this.state).then(console.log(this.state)).catch(console.log("No Funciona"));
     }
 
     renderDer() {
@@ -62,10 +69,10 @@ class ComponenteM extends React.Component {
                         </div>
                         <div class="form-group" style={{display: 'flex'}}>
                             <label for="exampleInputPassword1">Dni</label>
-                            <input type="number" class="form-control" id="exampleInputPassword1" placeholder={this.state.dni}onChange={event => this.setDni(event)}/>
+                            <input type="text" maxlength="8" class="form-control" id="exampleInputPassword1" placeholder={this.state.dni}onChange={event => this.setDni(event)}/>
                         </div>
                     </form>
-                        <button type="submit" class="btn btn-primary" onClick={() =>this.modificarUsuario()} >Submit</button>
+                        <button class="btn btn-primary" onClick={() => this.modificarUsuario()} >Submit</button>
                     </div>
                 </div>
             </div>
